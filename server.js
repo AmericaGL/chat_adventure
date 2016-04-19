@@ -3,6 +3,7 @@
 let util = require('util');
 let http = require('http');
 let Bot  = require('@kikinteractive/kik');
+let mongoose = require('mongoose');
 
 // Configure the bot API endpoint, details for your bot
 let bot = new Bot({

@@ -9,3 +9,9 @@ var
 	password: String,
   state: String
 })
+
+
+
+var User = mongoose.model('User', userSchema)
+
+module.exports = User
