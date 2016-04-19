@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Chat Adventure Chat Bot",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "^4.4.12"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
