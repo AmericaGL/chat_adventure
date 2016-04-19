@@ -20,6 +20,7 @@ bot.updateBotConfiguration();
 bot.onTextMessage((message) => {
   //Needed to create variable for the Outgoing Message
   var outgoingMessage
+  var knife = false
 
   //See this: https://github.com/kikinteractive/kik-node#Message+addResponseKeyboard
   //addResponseKeyboard takes 3 arguments: the Suggestions(buttons as an array), to keep keybaord hiddeen (boolean), to what user
@@ -60,9 +61,7 @@ bot.onTextMessage((message) => {
     outgoingMessage = Bot.Message.text("A woman on a rocking chair....with a white dress.  There's a key on a dresser next to her...")
     outgoingMessage.addResponseKeyboard(["Go talk to the woman", "Grab the key and bounce"], false, message.from)
 
-  }else if(message.body === "Go talk to the woman"){//Talk to Woman Death
-    outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
-    outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
+
 
   }else if(message.body === "Grab the key and bounce"){//To the basement
     outgoingMessage = Bot.Message.text("I think this is the key for the basement")
@@ -72,9 +71,37 @@ bot.onTextMessage((message) => {
     outgoingMessage = Bot.Message.text("It opened!  It's dark down there.  These moans are getting louder...I think I see a cell down there")
     outgoingMessage.addResponseKeyboard(["Go down there. Maybe someone needs help", "F this.  Leave now!"], false, message.from)
 
-  }else if(message.body === "Go down there. Maybe someone needs help" || message.body === "F this.  Leave now!"){//Living Room
-    outgoingMessage = Bot.Message.text("It opened!  It's dark down there.  These moans are getting louder...I think I see a cell down there")
-    outgoingMessage.addResponseKeyboard(["Go down there. Maybe someone needs help", "F this.  Leave now!"], false, message.from)
+  }else if(message.body === "Go down there. Maybe someone needs help" || message.body === "F this.  Leave now!"){//basement
+    outgoingMessage = Bot.Message.text("I've gone too far.  I need to check this out ")
+    outgoingMessage.addResponseKeyboard(["What's going on?"], false, message.from)
+
+  }else if(message.body === "What's going on?"){//Basement Zombie kids
+    outgoingMessage = Bot.Message.text("There's a bunch of kids!  Pale disgusting things.  Blood is coming out of their eyes and they're trying to grab me!!!")
+    outgoingMessage.addResponseKeyboard(["See if you can free them?", "Leave this sick place!"], false, message.from)
+
+  }else if(message.body === "See if you can free them?"){//Basement Zombie kids
+    outgoingMessage = Bot.Message.text("I tried but there is man with a shotgun walking down the stairs.  I'm hiding need to stay quiet...")
+    outgoingMessage.addResponseKeyboard(["What's happening??"], false, message.from)
+
+  }else if(message.body === "What's happening??"){//Basement Zombie kids
+    outgoingMessage = Bot.Message.text("The kids busted out!  They're eating the man with the shotgun.  I can make it got the door! ")
+    outgoingMessage.addResponseKeyboard(["Go!"], false, message.from)
+
+  }else if(message.body === "Go!"){//Basement Zombie kids
+    outgoingMessage = Bot.Message.text("I'm outside....on my way back home.  You saved my life.  Couldn't have dont it without you.  Stay safe tonight.")
+    outgoingMessage.addResponseKeyboard(["Play Again"], false, message.from)
+
+
+//Death Route
+  }else if(message.body === "Leave this sick place!"){//Basement Zombie kids
+    outgoingMessage = Bot.Message.text("There's a man with shotgun blocking the basement door!")
+    outgoingMessage.addResponseKeyboard(["Fight him!", "Hide!"], false, message.from)
+
+  }else if(message.body === "Go talk to the woman" || message.body === "Fight him!" || message.body === "Hide!"  ){//Talk to Woman Death
+    outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
+    outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
+
+
 
 
 
