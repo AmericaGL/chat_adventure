@@ -1,0 +1,26 @@
+{
+  "name": "chat_adventure",
+  "version": "1.0.0",
+  "description": "Chat Adventure Chat Bot",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dskaiser82/chat_adventure.git"
+  },
+  "keywords": [
+    "kik",
+    "chat",
+    "bot"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dskaiser82/chat_adventure/issues"
+  },
+  "homepage": "https://github.com/dskaiser82/chat_adventure#readme"
+}
