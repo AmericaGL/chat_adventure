@@ -53,10 +53,33 @@ bot.onTextMessage((message) => {
     outgoingMessage.addResponseKeyboard(["Take the knife!", "What's around?"], false, message.from)
 
   }else if(message.body === "Take the knife!" || message.body === "What's around?"){//Living Room
-    outgoingMessage = Bot.Message.text("There are these huge doberman's in the backyard.  They're chained up...eating some fleshy thing.  A bone or something ")
-    outgoingMessage.addResponseKeyboard(["Let's go upstairs", "See if you can go in the backyard"], false, message.from)
+    outgoingMessage = Bot.Message.text("I'm upstairs now...walking towards the one room ")
+    outgoingMessage.addResponseKeyboard(["What do you see?"], false, message.from)
+
+  }else if(message.body === "What do you see?"){//Living Room
+    outgoingMessage = Bot.Message.text("A woman on a rocking chair....with a white dress.  There's a key on a dresser next to her...")
+    outgoingMessage.addResponseKeyboard(["Go talk to the woman", "Grab the key and bounce"], false, message.from)
+
+  }else if(message.body === "Go talk to the woman"){//Talk to Woman Death
+    outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
+    outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
+
+  }else if(message.body === "Grab the key and bounce"){//To the basement
+    outgoingMessage = Bot.Message.text("I think this is the key for the basement")
+    outgoingMessage.addResponseKeyboard(["See if the key works"], false, message.from)
+
+  }else if(message.body === "See if the key works"){//In the basement
+    outgoingMessage = Bot.Message.text("It opened!  It's dark down there.  These moans are getting louder...I think I see a cell down there")
+    outgoingMessage.addResponseKeyboard(["Go down there. Maybe someone needs help", "F this.  Leave now!"], false, message.from)
+
+  }else if(message.body === "Go down there. Maybe someone needs help" || message.body === "F this.  Leave now!"){//Living Room
+    outgoingMessage = Bot.Message.text("It opened!  It's dark down there.  These moans are getting louder...I think I see a cell down there")
+    outgoingMessage.addResponseKeyboard(["Go down there. Maybe someone needs help", "F this.  Leave now!"], false, message.from)
 
 
+
+
+////================================================================================================
   }else if(message.body === "Too busy.  Sorry." || message.body === "No F-ing way"){//Leave Message
     outgoingMessage = Bot.Message.text("Cool.  TTYL")
     outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
