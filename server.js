@@ -10,7 +10,7 @@ let User = require('./models/user.js');
 //mlab
 var DB_URL = process.env.MLAB_LINK || 'mongodb://localhost/chat-bot-users'
 
-//we'll need to switch this to mLab....
+//Mongoose 
 mongoose.connect(DB_URL, function(err){
 	if(err) throw err
 	console.log("Mongo database connected to", DB_URL)
