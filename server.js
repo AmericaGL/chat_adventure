@@ -4,10 +4,21 @@ let util = require('util');
 let http = require('http');
 let Bot  = require('@kikinteractive/kik');
 let mongoose = require('mongoose');
+let User = require('./models/user.js');
+
+
+//mlab
+var DB_URL = process.env.MLAB_LINK || 'mongodb://localhost/chat-bot-users'
+
+//we'll need to switch this to mLab....
+mongoose.connect(DB_URL, function(err){
+	if(err) throw err
+	console.log("Mongo database connected to", DB_URL)
+})
 
 // Configure the bot API endpoint, details for your bot
 let bot = new Bot({
-    username: 'chat_stories',
+    username: 'chat_stories',  //process.env.BOT_USERNAME
     apiKey: 'c8f28c78-26af-42de-84ea-f237b1b7e506',
     baseUrl:  'http://1e384853.ngrok.io'
 });
@@ -22,6 +33,16 @@ bot.onTextMessage((message) => {
   //Needed to create variable for the Outgoing Message
   var outgoingMessage
   var knife = false
+
+	User.findOne({name:message.from}, function(err,user){
+		console.log(user, err)
+		if(user === null){
+			user = new User({name: message.from, password:"password", state:"default"})
+		}
+
+		//Move all If/Else's Here!! The Whole Thing
+		user.save()
+	})
 
   //See this: https://github.com/kikinteractive/kik-node#Message+addResponseKeyboard
   //addResponseKeyboard takes 3 arguments: the Suggestions(buttons as an array), to keep keybaord hiddeen (boolean), to what user
