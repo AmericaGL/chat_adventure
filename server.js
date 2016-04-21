@@ -132,21 +132,27 @@ bot.onTextMessage((message) => {
 	    outgoingMessage = Bot.Message.text("I've gone too far.  I need to check this out ")
 	    outgoingMessage.addResponseKeyboard(["What's going on?"], false, message.from)
 
-	  }else if(user.state === 10){//Basement Zombie kids at 10
+	  }else if(user.state === 10){//Basement Zombie kids.  Leave this sick place is death Route at 10.
 			user.state = 11
 			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("There's a bunch of kids!  Pale disgusting things.  Blood is coming out of their eyes and they're trying to grab me!!!")
 	    outgoingMessage.addResponseKeyboard(["See if you can free them?", "Leave this sick place!"], false, message.from)
 
 	  }else if(message.body === "See if you can free them?"){//Basement Zombie kids
+			user.state = user.state+1 //at 12
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("I tried but there is man with a shotgun walking down the stairs.  I'm hiding need to stay quiet...")
 	    outgoingMessage.addResponseKeyboard(["What's happening??"], false, message.from)
 
 	  }else if(message.body === "What's happening??"){//Basement Zombie kids
+			user.state = user.state+2 //at 14
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("The kids busted out!  They're eating the man with the shotgun.  I can make it got the door! ")
 	    outgoingMessage.addResponseKeyboard(["Go!"], false, message.from)
 
-	  }else if(message.body === "Go!"){//Basement Zombie kids
+	  }else if(message.body === "Go!"){//Game Win at 0
+			user.state = 0 //at 15
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("I'm outside....on my way back home.  You saved my life.  Couldn't have dont it without you.  Stay safe tonight.")
 	    outgoingMessage.addResponseKeyboard(["Play Again"], false, message.from)
 
@@ -186,8 +192,7 @@ bot.onTextMessage((message) => {
 
 	  else{ //for first message
 			currentState+1
-	  //   // outgoingMessage = Bot.Message.text("he")
-	  //   // outgoingMessage.addResponseKeyboard(["What's up?"], false, message.from)
+
 	  	}
 
 
