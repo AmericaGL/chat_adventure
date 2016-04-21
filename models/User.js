@@ -7,7 +7,7 @@ var
 	name: String,
 	email: String,
 	password: String,
-  state: String
+  state: Number
 })
 
 

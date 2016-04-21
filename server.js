@@ -47,17 +47,17 @@ bot.onTextMessage((message) => {
     var currentState = user.state
 
 
-		if(user.state === "default") { //second message
+		if(user.state === 0) { //second message
 		// if(message.body === "hey" || message.body === "What are you up to?") { //second message
 	    outgoingMessage = Bot.Message.text("hey i need advice")
 
 			console.log(user)
 	    outgoingMessage.addResponseKeyboard(["Sure.  What's up", "Too busy.  Sorry."], false, message.from)
-			user.state = "street"
+			user.state = 1
 	    //message.reply("cool");
 	    //message.reply("Hey, I need some advice");
 		}
-		if(user.state === "street"){
+		if(user.state === 1){
 	  // }else if(message.body === "Sure.  What's up"){
 	    outgoingMessage = Bot.Message.text("There's this creepy house on my street. And the front door is wide open.  Should I go in?")
 	    outgoingMessage.addResponseKeyboard(["Do it!", "No F-ing way"], false, message.from)
@@ -143,7 +143,7 @@ bot.onTextMessage((message) => {
 	    outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
 	  else{ //for first message
-			user.state = "default"
+			user.state = currentState+1
 	    // outgoingMessage = Bot.Message.text("he")
 	    // outgoingMessage.addResponseKeyboard(["What's up?"], false, message.from)
 	  }
