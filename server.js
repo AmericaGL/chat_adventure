@@ -107,14 +107,14 @@ bot.onTextMessage((message) => {
 	    outgoingMessage.addResponseKeyboard(["What do you see?"], false, message.from)
 
 	  }else if(user.state === 6){//Go Talk is a Death Route. At 6
-			user.state = 7
+			user.state = user.state+1 //at 7
 			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("A woman on a rocking chair....with a white dress.  There's a key on a dresser next to her...")
 	    outgoingMessage.addResponseKeyboard(["Go talk to the woman", "Grab the key and bounce"], false, message.from)
 
 
 
-	  }else if(user.state === 7){//To the basement at 7
+	  }else if(message.body === "Grab the key and bounce"){//To the basement at 7
 			user.state = 8
 			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("I think this is the key for the basement")
@@ -160,7 +160,7 @@ bot.onTextMessage((message) => {
 	    outgoingMessage.addResponseKeyboard(["Fight him!", "Hide!"], false, message.from)
 
 	  }
-		else if(message.body === "Go talk to the woman" || message.body === "Fight him!" || message.body === "Hide!"  ){//Talk to Woman Death
+		else if(user.state === 31 || message.body === "Go talk to the woman" ){//Talk to Woman Death
 			user.state = 0;
 	    outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
 	    outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
