@@ -43,7 +43,7 @@ bot.onTextMessage((message) => {
 		}
 
 		//Move all If/Else's Here!! The Whole Thing
-		user.save()
+
 		var currentState = user.state
 		//
 
@@ -52,21 +52,21 @@ bot.onTextMessage((message) => {
 		if(currentState === 0) { //second message
 		// if(message.body === "hey" || message.body === "What are you up to?") { //second message
 	    outgoingMessage = Bot.Message.text("hey i need advice")
-			currentState+1
+			user.state = user.state+1
 			console.log(currentState)
 	    outgoingMessage.addResponseKeyboard(["Sure.  What's up", "Too busy.  Sorry."], false, message.from)
 
 	    //message.reply("cool");
 	    //message.reply("Hey, I need some advice");
 		}
-		if(currentState === 1){
+		if(user.state  === 1){
 	  // }else if(message.body === "Sure.  What's up"){
 	    outgoingMessage = Bot.Message.text("There's this creepy house on my street. And the front door is wide open.  Should I go in?")
 	    outgoingMessage.addResponseKeyboard(["Do it!", "No F-ing way"], false, message.from)
 			currentState+1  //at 2
 
 	  }
-		if(currentState === 2){//inside house
+		if(user.state === 2){//inside house
 
 	    outgoingMessage = Bot.Message.text("Cool.  I'm inside. Looking around....There's a living room, an upstairs, a kitchen, and a basement.  Where should I go?")
 	    outgoingMessage.addResponseKeyboard(["go to the living room", "what's up with the basement" ], false, message.from)
@@ -179,7 +179,7 @@ bot.onTextMessage((message) => {
 	  	}
 
 
-
+    user.save()//save the user
 	  bot.send(outgoingMessage, message.from)
 
 
