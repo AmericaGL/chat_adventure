@@ -63,7 +63,7 @@ bot.onTextMessage((message) => {
 	  // }else if(message.body === "Sure.  What's up"){
 	    outgoingMessage = Bot.Message.text("There's this creepy house on my street. And the front door is wide open.  Should I go in?")
 	    outgoingMessage.addResponseKeyboard(["Do it!", "No F-ing way"], false, message.from)
-			currentState+1  //at 2
+				user.state = user.state+1 //at 2
 
 	  }
 		if(user.state === 2){//inside house
@@ -75,31 +75,31 @@ bot.onTextMessage((message) => {
 
 	  }
 		if(message.body === "what's up with the basement"){//option B Checkout basment
-			  currentState +2 //this Option B, skip a number
+			  	user.state = user.state+2 //this Option B, skip a number
 	      outgoingMessage = Bot.Message.text("There's weird noises...like moaning or something. I dont waant to go down there!  It's lockded anyway....needs a key")
 	      outgoingMessage.addResponseKeyboard(["go to the living room"], false, message.from)
 
 	  }
-		if(currentState === 4){//Living Room
-			currentState+1
+		if(user.state === 4){//Living Room
+				user.state = user.state+1
 	    outgoingMessage = Bot.Message.text("Kind of boring.  There a fireplace with a fire burning...And a wallet on the floor.  Some kid's school ID?  Who is this kid?...")
 	    outgoingMessage.addResponseKeyboard(["Take his wallet!  Easy money.", "Let's got see more of the house"], false, message.from)
 
 	  }
-		if(currentState === 5){//kitchen
-			currentState+1
+		if(user.state === 5){//kitchen
+			user.state = user.state+1
 	    outgoingMessage = Bot.Message.text("Cool.  I'm in the kitchen.  There's kitchen knife.  A big one!  I dont feel safe.  Like someone is f%cking watching me... ")
 	    outgoingMessage.addResponseKeyboard(["Take the knife!", "What's around?"], false, message.from)
 
 	  }
-		if(currentState === 6){//Upstairs
-			currentState+1
+		if(user.state === 6){//Upstairs
+			user.state = user.state+1
 	    outgoingMessage = Bot.Message.text("I'm upstairs now...walking towards the one room ")
 	    outgoingMessage.addResponseKeyboard(["What do you see?"], false, message.from)
 
 	  }
-		if(currentState === 7){//Living Room
-			currentState+2 //Option B is death see death Route
+		if(user.state === 7){//Living Room
+			 //Option B is death see death Route
 	    outgoingMessage = Bot.Message.text("A woman on a rocking chair....with a white dress.  There's a key on a dresser next to her...")
 	    outgoingMessage.addResponseKeyboard(["Go talk to the woman", "Grab the key and bounce"], false, message.from)
 
