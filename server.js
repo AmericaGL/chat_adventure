@@ -34,8 +34,6 @@ bot.onTextMessage((message) => {
   var outgoingMessage
   var knife = false
 
-	// //User State to change for generic texts
-	// var state = user.state
 
 	User.findOne({name:message.from}, function(err,user){
 		console.log(user, err)
@@ -46,12 +44,12 @@ bot.onTextMessage((message) => {
 		//Move all If/Else's Here!! The Whole Thing
 		user.save()
 
-		//It has to go here after the user.save
 
 
-		if(message.body === "hey" || message.body === "What are you up to?") { //second message
+		if(user.state === "default") { //second message
+		// if(message.body === "hey" || message.body === "What are you up to?") { //second message
 	    outgoingMessage = Bot.Message.text("hey i need advice")
-			user.state = "wow"
+			user.state = "default"
 			console.log(user)
 	    outgoingMessage.addResponseKeyboard(["Sure.  What's up", "Too busy.  Sorry."], false, message.from)
 	    //message.reply("cool");
@@ -130,7 +128,7 @@ bot.onTextMessage((message) => {
 
 
 	////================================================================================================
-	  }else if(message.body === "Too busy.  Sorry." || message.body === "No F-ing way"){//Leave Message
+}else if(message.body === "Too busy.  Sorry." || message.body === "No F-ing way"){//Leave Message
 	    outgoingMessage = Bot.Message.text("Cool.  TTYL")
 	    outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
