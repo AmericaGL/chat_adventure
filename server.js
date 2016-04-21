@@ -43,34 +43,37 @@ bot.onTextMessage((message) => {
 
 		//Move all If/Else's Here!! The Whole Thing
 		user.save()
-
+		//
+    var currentState = user.state
 
 
 		if(user.state === "default") { //second message
 		// if(message.body === "hey" || message.body === "What are you up to?") { //second message
 	    outgoingMessage = Bot.Message.text("hey i need advice")
-			user.state = "street"
+
 			console.log(user)
 	    outgoingMessage.addResponseKeyboard(["Sure.  What's up", "Too busy.  Sorry."], false, message.from)
+			user.state = "street"
 	    //message.reply("cool");
 	    //message.reply("Hey, I need some advice");
-		}else if(user.state === "street"){
+		}
+		if(user.state === "street"){
 	  // }else if(message.body === "Sure.  What's up"){
-
 	    outgoingMessage = Bot.Message.text("There's this creepy house on my street. And the front door is wide open.  Should I go in?")
 	    outgoingMessage.addResponseKeyboard(["Do it!", "No F-ing way"], false, message.from)
 			user.sate = "creepy house"
 
-	  }if(user.sate = "creepy house"){//inside house
+	  }else if(user.sate = "creepy house"){//inside house
 
 	    outgoingMessage = Bot.Message.text("Cool.  I'm inside. Looking around....There's a living room, an upstairs, a kitchen, and a basement.  Where should I go?")
 	    outgoingMessage.addResponseKeyboard(["go to the living room", "what's up with the basement" ], false, message.from)
 
 	  }else if(message.body === "what's up with the basement"){//inside house 2
 	      outgoingMessage = Bot.Message.text("There's weird noises...like moaning or something. I dont waant to go down there!  It's lockded anyway....needs a key")
+				user.state = "living room"
 	      outgoingMessage.addResponseKeyboard(["go to the living room"], false, message.from)
 
-	  }else if(message.body === "go to the living room"){//Living Room
+	  }if(message.body === "go to the living room"){//Living Room
 	    outgoingMessage = Bot.Message.text("Kind of boring.  There a fireplace with a fire burning...And a wallet on the floor.  Some kid's school ID?  Who is this kid?...")
 	    outgoingMessage.addResponseKeyboard(["Take his wallet!  Easy money.", "Let's got see more of the house"], false, message.from)
 
@@ -123,9 +126,10 @@ bot.onTextMessage((message) => {
 	    outgoingMessage.addResponseKeyboard(["Fight him!", "Hide!"], false, message.from)
 
 	  }else if(message.body === "Go talk to the woman" || message.body === "Fight him!" || message.body === "Hide!"  ){//Talk to Woman Death
-			user.state = "default"
+
 	    outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
 	    outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
+			user.state = "default"
 
 
 
@@ -139,9 +143,9 @@ bot.onTextMessage((message) => {
 	    outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
 	  else{ //for first message
-			user.state === "street"
-	    outgoingMessage = Bot.Message.text("hey")
-	    outgoingMessage.addResponseKeyboard(["I'm freaking out?"], false, message.from)
+			user.state = currentState
+	    // outgoingMessage = Bot.Message.text("he")
+	    // outgoingMessage.addResponseKeyboard(["What's up?"], false, message.from)
 	  }
 
 
