@@ -42,14 +42,25 @@ bot.onTextMessage((message) => {
 
 		}
 
-		//Move all If/Else's Here!! The Whole Thing
 
+/////////////////////////////////////end/////////////////////////////////
 		var currentState = user.state
 		//
 
+		if(message.body === "Reset"){//Dev Reset
 
+			outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
+			outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
+		}
+		if(message.body === "Sammy has died"){//Reset Not working
+			user.state = 0
+			outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
 
-		if(currentState === 0) { //second message
+		}
+
+////////////////////////////////////////Start////////////////////////
+
+		if(user.state === 0) { //second message
 		// if(message.body === "hey" || message.body === "What are you up to?") { //second message
 	    outgoingMessage = Bot.Message.text("hey i need advice")
 			user.state = user.state+1
@@ -59,23 +70,24 @@ bot.onTextMessage((message) => {
 	    //message.reply("cool");
 	    //message.reply("Hey, I need some advice");
 		}
-		if(user.state  === 1){
+		else if(user.state  === 1){
 	  // }else if(message.body === "Sure.  What's up"){
 	    outgoingMessage = Bot.Message.text("There's this creepy house on my street. And the front door is wide open.  Should I go in?")
 	    outgoingMessage.addResponseKeyboard(["Do it!", "No F-ing way"], false, message.from)
 				user.state = user.state+1 //at 2
 
 	  }
-		if(user.state === 2){//inside house
+		else if(user.state === 2){//inside house
 
 	    outgoingMessage = Bot.Message.text("Cool.  I'm inside. Looking around....There's a living room, an upstairs, a kitchen, and a basement.  Where should I go?")
 	    outgoingMessage.addResponseKeyboard(["go to the living room", "what's up with the basement" ], false, message.from)
+				user.state = user.state+1 //at 3
 
 
 
 	  }
 		if(message.body === "what's up with the basement"){//option B Checkout basment
-			  	user.state = user.state+2 //this Option B, skip a number
+			  	user.state = user.state+10 //this Option B, skip a number
 	      outgoingMessage = Bot.Message.text("There's weird noises...like moaning or something. I dont waant to go down there!  It's lockded anyway....needs a key")
 	      outgoingMessage.addResponseKeyboard(["go to the living room"], false, message.from)
 
@@ -142,20 +154,13 @@ bot.onTextMessage((message) => {
 
 	  }
 		if(message.body === "Go talk to the woman" || message.body === "Fight him!" || message.body === "Hide!"  ){//Talk to Woman Death
-			currentState = -1
+			user.state = 0;
 	    outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
 	    outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
+		}
 
 
-		}//Dev Reset
-		if(message.body === "Reset"){//Reset Not working
-			currentState = -1
-			outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
-			outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
-		}
-		if(message.body === "Sammy has died"){//Reset Not working
-			currentState = 0
-		}
+
 			// outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
 			// outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
 
