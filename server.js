@@ -56,11 +56,13 @@ bot.onTextMessage((message) => {
 	    //message.reply("Hey, I need some advice");
 		}else if(user.state === "street"){
 	  // }else if(message.body === "Sure.  What's up"){
-			user.sate = "creepy house"
+
 	    outgoingMessage = Bot.Message.text("There's this creepy house on my street. And the front door is wide open.  Should I go in?")
 	    outgoingMessage.addResponseKeyboard(["Do it!", "No F-ing way"], false, message.from)
+			user.sate = "creepy house"
 
-	  }else if(user.state === "creepy house"){//inside house
+	  }if(user.sate = "creepy house"){//inside house
+
 	    outgoingMessage = Bot.Message.text("Cool.  I'm inside. Looking around....There's a living room, an upstairs, a kitchen, and a basement.  Where should I go?")
 	    outgoingMessage.addResponseKeyboard(["go to the living room", "what's up with the basement" ], false, message.from)
 
@@ -132,10 +134,12 @@ bot.onTextMessage((message) => {
 
 	////================================================================================================
 }else if(message.body === "Too busy.  Sorry." || message.body === "No F-ing way"){//Leave Message
-	    outgoingMessage = Bot.Message.text("Cool.  TTYL")
+			user.state === "default"
+			outgoingMessage = Bot.Message.text("Cool.  TTYL")
 	    outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
 	  else{ //for first message
+			user.state === "street"
 	    outgoingMessage = Bot.Message.text("hey")
 	    outgoingMessage.addResponseKeyboard(["I'm freaking out?"], false, message.from)
 	  }
