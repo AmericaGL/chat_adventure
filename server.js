@@ -86,26 +86,29 @@ bot.onTextMessage((message) => {
 
 
 	  }
-		if(message.body === "what's up with the basement"){//option B Checkout basment
-			  	user.state = user.state+10 //this Option B, skip a number
+		else if(message.body === "what's up with the basement"){//option B Checkout basment
+			  	user.state = user.state+10 // at 13
 	      outgoingMessage = Bot.Message.text("There's weird noises...like moaning or something. I dont waant to go down there!  It's lockded anyway....needs a key")
 	      outgoingMessage.addResponseKeyboard(["go to the living room"], false, message.from)
 
 	  }
-		if(user.state === 4){//Living Room
-				user.state = user.state+1
+		else if(user.state === 3 || 13 ){//Want if 3 or 13
+				user.state = 4
+				console.log(user.state)
 	    outgoingMessage = Bot.Message.text("Kind of boring.  There a fireplace with a fire burning...And a wallet on the floor.  Some kid's school ID?  Who is this kid?...")
 	    outgoingMessage.addResponseKeyboard(["Take his wallet!  Easy money.", "Let's got see more of the house"], false, message.from)
 
 	  }
-		if(user.state === 5){//kitchen
-			user.state = user.state+1
+		if(user.state === 4){//kitchen
+			user.state = 5
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("Cool.  I'm in the kitchen.  There's kitchen knife.  A big one!  I dont feel safe.  Like someone is f%cking watching me... ")
 	    outgoingMessage.addResponseKeyboard(["Take the knife!", "What's around?"], false, message.from)
 
 	  }
-		if(user.state === 6){//Upstairs
-			user.state = user.state+1
+		if(user.state === 5){//Upstairs
+			user.state = 6
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("I'm upstairs now...walking towards the one room ")
 	    outgoingMessage.addResponseKeyboard(["What do you see?"], false, message.from)
 
