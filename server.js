@@ -69,15 +69,13 @@ bot.onTextMessage((message) => {
 
 	    //message.reply("cool");
 	    //message.reply("Hey, I need some advice");
-		}
-		else if(user.state  === 1){
+		}else if(user.state  === 1){
 	  // }else if(message.body === "Sure.  What's up"){
 	    outgoingMessage = Bot.Message.text("There's this creepy house on my street. And the front door is wide open.  Should I go in?")
 	    outgoingMessage.addResponseKeyboard(["Do it!", "No F-ing way"], false, message.from)
 				user.state = 2 //at 2
 
-	  }
-		else if(user.state === 2){//inside house
+	  }else if(user.state === 2){//inside house
        //on Two Options dont set user.state
 	    outgoingMessage = Bot.Message.text("Cool.  I'm inside. Looking around....There's a living room, an upstairs, a kitchen, and a basement.  Where should I go?")
 	    outgoingMessage.addResponseKeyboard(["go to the living room", "what's up with the basement" ], false, message.from)
@@ -85,54 +83,58 @@ bot.onTextMessage((message) => {
 
 
 
-	  }
-		else if(message.body === "what's up with the basement"){//option B Checkout basment
+	  }else if(message.body === "what's up with the basement"){//option B Checkout basment
 			  	user.state = user.state+10 // at 13
 	      outgoingMessage = Bot.Message.text("There's weird noises...like moaning or something. I dont waant to go down there!  It's lockded anyway....needs a key")
 	      outgoingMessage.addResponseKeyboard(["go to the living room"], false, message.from)
 
-	  }
-		else if(user.state === 3 || 13 ){//Want if 3 or 13
+	  }else if(user.state === 3 || user.state === 13 ){//Want if 3 or 13
 				user.state = 4
 				console.log(user.state)
 	    outgoingMessage = Bot.Message.text("Kind of boring.  There a fireplace with a fire burning...And a wallet on the floor.  Some kid's school ID?  Who is this kid?...")
 	    outgoingMessage.addResponseKeyboard(["Take his wallet!  Easy money.", "Let's got see more of the house"], false, message.from)
 
-	  }
-		else if(user.state === 4){//kitchen at 4
+	  }else if(user.state === 4){//kitchen at 4
 			user.state = 5
 			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("Cool.  I'm in the kitchen.  There's kitchen knife.  A big one!  I dont feel safe.  Like someone is f%cking watching me... ")
 	    outgoingMessage.addResponseKeyboard(["Take the knife!", "What's around?"], false, message.from)
 
-	  }	else if(user.state === 5){//Upstairs at 5
+	  }else if(user.state === 5){//Upstairs at 5
 			user.state = 6
 			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("I'm upstairs now...walking towards the one room ")
 	    outgoingMessage.addResponseKeyboard(["What do you see?"], false, message.from)
 
-	  }else if(user.state === 6){//Living Room
-			 //Option B is death see death Route.  No Set of user state
+	  }else if(user.state === 6){//Go Talk is a Death Route. At 6
+			user.state = 7
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("A woman on a rocking chair....with a white dress.  There's a key on a dresser next to her...")
 	    outgoingMessage.addResponseKeyboard(["Go talk to the woman", "Grab the key and bounce"], false, message.from)
 
 
 
-	  }else if(message.body === "Grab the key and bounce"){//To the basement at 6
-			user.state = 7
+	  }else if(user.state === 7){//To the basement at 7
+			user.state = 8
 			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("I think this is the key for the basement")
 	    outgoingMessage.addResponseKeyboard(["See if the key works"], false, message.from)
 
-	  }else if(user.state === 7){//In the basement
+	  }else if(user.state === 8){//In the basement at 8
+			user.state = 9
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("It opened!  It's dark down there.  These moans are getting louder...I think I see a cell down there")
 	    outgoingMessage.addResponseKeyboard(["Go down there. Maybe someone needs help", "F this.  Leave now!"], false, message.from)
 
-	  }else if(message.body === "Go down there. Maybe someone needs help" || message.body === "F this.  Leave now!"){//basement
+	  }else if(user.state === 9){//basement door. At 9
+			user.state = 10
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("I've gone too far.  I need to check this out ")
 	    outgoingMessage.addResponseKeyboard(["What's going on?"], false, message.from)
 
-	  }else if(message.body === "What's going on?"){//Basement Zombie kids
+	  }else if(user.state === 10){//Basement Zombie kids at 10
+			user.state = 11
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("There's a bunch of kids!  Pale disgusting things.  Blood is coming out of their eyes and they're trying to grab me!!!")
 	    outgoingMessage.addResponseKeyboard(["See if you can free them?", "Leave this sick place!"], false, message.from)
 
@@ -151,12 +153,14 @@ bot.onTextMessage((message) => {
 
 	//Death Route
 	  }
-		if(message.body === "Leave this sick place!"){//Basement Zombie kids
+		else if(message.body === "Leave this sick place!"){//Basement Zombie kids
+			user.state = user.state+20
+			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("There's a man with shotgun blocking the basement door!")
 	    outgoingMessage.addResponseKeyboard(["Fight him!", "Hide!"], false, message.from)
 
 	  }
-		if(message.body === "Go talk to the woman" || message.body === "Fight him!" || message.body === "Hide!"  ){//Talk to Woman Death
+		else if(message.body === "Go talk to the woman" || message.body === "Fight him!" || message.body === "Hide!"  ){//Talk to Woman Death
 			user.state = 0;
 	    outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
 	    outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
@@ -175,7 +179,7 @@ bot.onTextMessage((message) => {
 
 	////================================================================================================
 
-		if(message.body === "Too busy.  Sorry." || message.body === "No F-ing way"){//Leave Message
+		else if(message.body === "Too busy.  Sorry." || message.body === "No F-ing way"){//Leave Message
 			currentState = 0
 			outgoingMessage = Bot.Message.text("Cool.  TTYL")
 	    outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
