@@ -129,7 +129,7 @@ bot.onTextMessage((message) => {
 
 	    outgoingMessage = Bot.Message.text("Error 499383 Phone is disconnected")
 	    outgoingMessage.addResponseKeyboard(["Sammy has died"], false, message.from)
-			user.state = "default"
+			user.state = "creepy house"
 
 
 
@@ -143,7 +143,7 @@ bot.onTextMessage((message) => {
 	    outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
 	  else{ //for first message
-			user.state = currentState
+			user.state = "default"
 	    // outgoingMessage = Bot.Message.text("he")
 	    // outgoingMessage.addResponseKeyboard(["What's up?"], false, message.from)
 	  }
