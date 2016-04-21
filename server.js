@@ -191,7 +191,8 @@ bot.onTextMessage((message) => {
 	    outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
 	  else{ //for first message
-			currentState+1
+			user.state = user.state+1
+			outgoingMessage = Bot.Message.text("Need to stay focused")
 
 	  	}
 
