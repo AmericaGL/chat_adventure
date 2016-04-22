@@ -4,6 +4,7 @@
   "description": "Chat Adventure Chat Bot",
   "main": "server.js",
   "dependencies": {
+    "dotenv": "^2.0.0",
     "mongoose": "^4.4.12"
   },
   "devDependencies": {},

@@ -5,6 +5,7 @@ let http = require('http');
 let Bot  = require('@kikinteractive/kik');
 let mongoose = require('mongoose');
 let User = require('./models/User.js');
+// let dotenv = require('dotenv').load({silent: true});
 
 
 //Db use mlab or Local Db
@@ -21,7 +22,9 @@ mongoose.connect(DB_URL, function(err){
 let bot = new Bot({
     username: 'chat_stories',  //process.env.BOT_USERNAME
     apiKey: 'c8f28c78-26af-42de-84ea-f237b1b7e506',
-    baseUrl:  'http://1e384853.ngrok.io'
+		baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku 
+
+		// baseUrl:  'http://1e384853.ngrok.io'  //for localhost
 });
 
 
