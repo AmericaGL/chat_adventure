@@ -4,7 +4,7 @@ let util = require('util');
 let http = require('http');
 let Bot  = require('@kikinteractive/kik');
 let mongoose = require('mongoose');
-let User = require('./models/user.js');
+let User = require('./models/User.js');
 
 
 //Db use mlab or Local Db
@@ -41,6 +41,13 @@ bot.onTextMessage((message) => {
 			user = new User({name: message.from, password:"password", state:0})
 
 		}
+
+
+
+////////////////////////////////////shuffle//////////////////////////////////////
+
+	var exclaims = ["I don't know what to do...","How did I get into this?","I should never have come here", "Help me!!"]
+  var mathRan = function (){return (Math.floor(Math.random() * (exclaims.length - 0)) + 0)}
 
 
 /////////////////////////////////////end/////////////////////////////////
@@ -185,15 +192,16 @@ bot.onTextMessage((message) => {
 
 	////================================================================================================
 
-		else if(message.body === "Too busy.  Sorry." || message.body === "No F-ing way"){//Leave Message
-			currentState = 0
-			outgoingMessage = Bot.Message.text("Cool.  TTYL")
-	    outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
+		// else if(message.body === "Too busy.  Sorry." || message.body === "No F-ing way"){//Leave Message
+		// 	user.state = user.state+1
+		// 	outgoingMessage = Bot.Message.text("Cool.  TTYL")
+	  //   outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
 	  else{ //for first message
-			user.state = user.state+1
-			outgoingMessage = Bot.Message.text("Need to stay focused")
-
+			outgoingMessage = Bot.Message.text(exclaims[mathRan()])
+			    outgoingMessage.addResponseKeyboard(["Keep Going"], false, message.from)
+					user.state = user.state+1
+					console.log(user.state, "This is the else")
 	  	}
 
 
