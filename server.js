@@ -8,7 +8,7 @@ let User = require('./models/User.js');
 
 
 //Db use mlab or Local Db
-var DB_URL = process.env.MLAB_LINK || 'mongodb://localhost/chat-bot-users'
+var DB_URL = process.env.MLAB_LINK || 'mongodb://127.0.0.1:27017/test'
 
 //Mongoose
 mongoose.connect(DB_URL, function(err){
