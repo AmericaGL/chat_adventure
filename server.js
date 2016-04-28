@@ -45,8 +45,7 @@ bot.onTextMessage((message) => {
 			user = new User({name: message.from, password:"password", state:0})
 
 		}
-  console.log("Hello Ivar")
-  Bot.Message.text("Hello World")
+
 
 ////////////////////////////////////shuffle//////////////////////////////////////
 
@@ -207,7 +206,9 @@ bot.onTextMessage((message) => {
 					user.state = user.state+1
 					console.log(user.state, "This is the else")
 	  	}
-
+			///Ivar
+			console.log("Hello Ivar")
+				outgoingMessage = Bot.Message.text("Hello World")
 
     user.save()//save the user
 	  bot.send(outgoingMessage, message.from)
