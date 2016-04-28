@@ -208,7 +208,7 @@ bot.onTextMessage((message) => {
 	  	}
 			///Ivar
 			console.log("Hello Ivar")
-				outgoingMessage = Bot.Message.text('\ue48d')
+				outgoingMessage = Bot.Message.text('\u1F60D')
 
     user.save()//save the user
 	  bot.send(outgoingMessage, message.from)
