@@ -45,7 +45,7 @@ bot.onTextMessage((message) => {
 			user = new User({name: message.from, password:"password", state:0})
 
 		}
-
+  console.log("Hello Ivar")
   Bot.Message.text("Hello World")
 
 ////////////////////////////////////shuffle//////////////////////////////////////
