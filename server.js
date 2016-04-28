@@ -207,8 +207,8 @@ bot.onTextMessage((message) => {
 					console.log(user.state, "This is the else")
 	  	}
 			///Ivar
-			// console.log("Hello Ivar")
-			// 	outgoingMessage = Bot.Message.text('\u1F601')
+			console.log("Hello Ivar")
+				outgoingMessage = Bot.Message.text('\ud83d\ude0d')
 
     user.save()//save the user
 	  bot.send(outgoingMessage, message.from)
