@@ -22,7 +22,7 @@ mongoose.connect(DB_URL, function(err){
 let bot = new Bot({
     username: 'chat_stories',  //process.env.BOT_USERNAME
     apiKey: 'c8f28c78-26af-42de-84ea-f237b1b7e506',
-		baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku 
+		baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku
 
 		// baseUrl:  'http://1e384853.ngrok.io'  //for localhost
 });
@@ -46,7 +46,7 @@ bot.onTextMessage((message) => {
 
 		}
 
-
+  Bot.Message.text("Hello World")
 
 ////////////////////////////////////shuffle//////////////////////////////////////
 
