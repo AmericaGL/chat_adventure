@@ -107,7 +107,7 @@ bot.onTextMessage((message) => {
 	  }else if(user.state === 4){//kitchen at 4
 			user.state = 5
 			console.log(user.state)
-	    outgoingMessage = Bot.Message.text("Cool.  I'm in the kitchen.  There's kitchen knife.  A big one!  I dont feel safe.  Like someone is f%cking watching me... ")
+	    outgoingMessage = Bot.Message.text("Cool.  I'm in the kitchen.  There's kitchen knife.  A big one!  I dont feel safe.  Like someone is watching me... ")
 	    outgoingMessage.addResponseKeyboard(["Take the knife!", "What's around?"], false, message.from)
 
 	  }else if(user.state === 5){//Upstairs at 5
@@ -206,7 +206,7 @@ bot.onTextMessage((message) => {
 					user.state = user.state+1
 					console.log(user.state, "This is the else")
 	  	}
-			///Ivar
+			///Ivar emoji test
 			// console.log("Hello Ivar")
 			// 	outgoingMessage = Bot.Message.text('\ud83d\ude0d')
 
