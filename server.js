@@ -82,7 +82,7 @@ bot.onTextMessage((message) => {
 		}else if(user.state  === 1){
 	  // }else if(message.body === "Sure.  What's up"){
 	    outgoingMessage = Bot.Message.text("There's this creepy house on my street. And the front door is wide open.  Should I go in?")
-	    outgoingMessage.addResponseKeyboard(["Do it!", "No F-ing way"], false, message.from)
+	    outgoingMessage.addResponseKeyboard(["Do it!", "No way!"], false, message.from)
 				user.state = 2 //at 2
 
 	  }else if(user.state === 2){//inside house
@@ -102,7 +102,7 @@ bot.onTextMessage((message) => {
 				user.state = 4
 				console.log(user.state)
 	    outgoingMessage = Bot.Message.text("Kind of boring.  There a fireplace with a fire burning...And a wallet on the floor.  Some kid's school ID?  Who is this kid?...")
-	    outgoingMessage.addResponseKeyboard(["Take his wallet!  Easy money.", "Let's got see more of the house"], false, message.from)
+	    outgoingMessage.addResponseKeyboard(["Take his wallet!  Easy money.", "Let's go see more of the house"], false, message.from)
 
 	  }else if(user.state === 4){//kitchen at 4
 			user.state = 5
@@ -134,7 +134,7 @@ bot.onTextMessage((message) => {
 			user.state = 9
 			console.log(user.state)
 	    outgoingMessage = Bot.Message.text("It opened!  It's dark down there.  These moans are getting louder...I think I see a cell down there")
-	    outgoingMessage.addResponseKeyboard(["Go down there. Maybe someone needs help", "F this.  Leave now!"], false, message.from)
+	    outgoingMessage.addResponseKeyboard(["Go down there. Maybe someone needs help", "Forget this! Leave now!"], false, message.from)
 
 	  }else if(user.state === 9){//basement door. At 9
 			user.state = 10
