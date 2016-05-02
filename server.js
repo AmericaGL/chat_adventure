@@ -196,7 +196,8 @@ bot.onTextMessage((message) => {
 	////================================================================================================
 
 		else if(message.body === "Keep Going"){//Leave Message
-			user.state = user.state+1
+			user.state = currentState;
+
 		}
 
 
