@@ -195,18 +195,18 @@ bot.onTextMessage((message) => {
 
 	////================================================================================================
 
-		else if(message.body === "Keep Going"){//Leave Message
-			user.state = currentState;
-
-		}
+		// else if(message.body === "Keep Going"){//Leave Message
+		// 	user.state = currentState;
+		//
+		// }
 
 
 
 		else{ //for first message
-			outgoingMessage = Bot.Message.text(exclaims[mathRan()])
-			    outgoingMessage.addResponseKeyboard(["Keep Going"], false, message.from)
-					// user.state = user.state+1
-					console.log(user.state, "This is the else")
+			// outgoingMessage = Bot.Message.text(exclaims[mathRan()])
+			//     outgoingMessage.addResponseKeyboard(["Keep Going"], false, message.from)
+					user.state = user.state+1
+			// 		console.log(user.state, "This is the else")
 	  	}
 			///Ivar emoji test
 			// console.log("Hello Ivar")
