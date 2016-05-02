@@ -200,7 +200,7 @@ bot.onTextMessage((message) => {
 		// 	outgoingMessage = Bot.Message.text("Cool.  TTYL")
 	  //   outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
-		else if(message === picUrl){ //for first message
+		else if(messages.picUrl === true){ //for first message
 			outgoingMessage = Bot.Message.text(exclaims[mathRan()])
 					outgoingMessage.addResponseKeyboard(["Keep Going"], false, message.from)
 					user.state = user.state+1
