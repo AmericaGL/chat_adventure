@@ -2,7 +2,7 @@
 
 let util = require('util');
 let http = require('http');
-let Bot  = require('@kikinteractive/kik');
+let Bot  = require('@kikinteractive/kik');   //access to Kik Library
 let mongoose = require('mongoose');
 let User = require('./models/User.js');
 // let dotenv = require('dotenv').load({silent: true});
@@ -200,7 +200,16 @@ bot.onTextMessage((message) => {
 		// 	outgoingMessage = Bot.Message.text("Cool.  TTYL")
 	  //   outgoingMessage.addResponseKeyboard(["BRB"], false, message.from)}
 
-	  else{ //for first message
+		else if(message === picUrl){ //for first message
+			outgoingMessage = Bot.Message.text(exclaims[mathRan()])
+					outgoingMessage.addResponseKeyboard(["Keep Going"], false, message.from)
+					user.state = user.state+1
+					console.log(user.state, "This is the else")
+			}
+
+
+
+		else{ //for first message
 			outgoingMessage = Bot.Message.text(exclaims[mathRan()])
 			    outgoingMessage.addResponseKeyboard(["Keep Going"], false, message.from)
 					user.state = user.state+1
