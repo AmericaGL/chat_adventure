@@ -8,32 +8,17 @@ let User = require('./models/User.js');
 // let dotenv = require('dotenv').load({silent: true});
 
 ///===========Kik Codes==============================
-
-// var codes  = requests.post(
-//     'https://api.kik.com/v1/code',
-//     headers={
-//         'Content-Type': 'application/json'
-//     },
-//     data=json.dumps({
-//         'data': 'Some arbitrary string'
-//     })
-// )
-// console.log(codes)
-
-
 var request = require('request');
-
-request.post(
-    'https://api.kik.com/v1/code',
-    { json: { key: 'value' } } ,
-    function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log(body)
-        }
-    }
-);
-
-
+request.post({
+	headers: {
+		  'Content-Type': 'application/json',
+			'Authorization': 'Basic ' + new Buffer("chat_stories:c8f28c78-26af-42de-84ea-f237b1b7e506").toString('base64')
+	 },
+        url: 'https://api.kik.com/v1/code'
+         }, function(error, response, body){
+            console.log(body);
+    });
+//=====================================================
 
 
 //Db use mlab or Local Db
@@ -51,9 +36,13 @@ let bot = new Bot({
     username: 'chat_stories',  //process.env.BOT_USERNAME
     apiKey: 'c8f28c78-26af-42de-84ea-f237b1b7e506',
 		baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku
+	
+			//baseUrl:  'http://6c9a14ef.ngrok.io '  //for localhost
 
-		// baseUrl:  'http://1e384853.ngrok.io'  //for localhost
+
 });
+
+
 
 
 
