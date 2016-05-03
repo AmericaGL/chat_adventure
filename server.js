@@ -7,6 +7,21 @@ let mongoose = require('mongoose');
 let User = require('./models/User.js');
 // let dotenv = require('dotenv').load({silent: true});
 
+///===========Kik Codes==============================
+
+var codes  = requests.post(
+    'https://api.kik.com/v1/code',
+    headers={
+        'Content-Type': 'application/json'
+    },
+    data=json.dumps({
+        'data': 'Some arbitrary string'
+    })
+)
+console.log(codes)
+
+
+
 
 //Db use mlab or Local Db
 var DB_URL = process.env.MLAB_LINK || 'mongodb://localhost/chat-bot-user'
@@ -195,18 +210,18 @@ bot.onTextMessage((message) => {
 
 	////================================================================================================
 
-		// else if(message.body === "Keep Going"){//Leave Message
-		// 	user.state = currentState;
-		//
-		// }
+		else if(message.body === "Keep Going"){//Leave Message
+			user.state = user.state+1
+
+		}
 
 
 
 		else{ //for first message
 			outgoingMessage = Bot.Message.text(exclaims[mathRan()])
 			    outgoingMessage.addResponseKeyboard(["Keep Going"], false, message.from)
-					user.state = user.state+1
-			// 		console.log(user.state, "This is the else")
+					// user.state = user.state+1
+					console.log(user.state, "This is the else")
 	  	}
 			///Ivar emoji test
 			// console.log("Hello Ivar")
