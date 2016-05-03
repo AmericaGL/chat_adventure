@@ -9,16 +9,29 @@ let User = require('./models/User.js');
 
 ///===========Kik Codes==============================
 
-var codes  = requests.post(
+// var codes  = requests.post(
+//     'https://api.kik.com/v1/code',
+//     headers={
+//         'Content-Type': 'application/json'
+//     },
+//     data=json.dumps({
+//         'data': 'Some arbitrary string'
+//     })
+// )
+// console.log(codes)
+
+
+var request = require('request');
+
+request.post(
     'https://api.kik.com/v1/code',
-    headers={
-        'Content-Type': 'application/json'
-    },
-    data=json.dumps({
-        'data': 'Some arbitrary string'
-    })
-)
-console.log(codes)
+    { json: { key: 'value' } } ,
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body)
+        }
+    }
+);
 
 
 
