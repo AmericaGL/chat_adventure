@@ -36,7 +36,7 @@ let bot = new Bot({
     username: 'chat_stories',  //process.env.BOT_USERNAME
     apiKey: 'c8f28c78-26af-42de-84ea-f237b1b7e506',
 		baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku
-	
+
 			//baseUrl:  'http://6c9a14ef.ngrok.io '  //for localhost
 
 
@@ -210,19 +210,19 @@ bot.onTextMessage((message) => {
 
 
 
-	////================================================================================================
-
-		else if(message.body === "Keep Going"){//Leave Message
-			user.state = user.state+1
-
-		}
+	// ////================================================================================================
+	//
+	// 	else if(message.body === "Keep Going"){//Leave Message
+	// 		user.state = user.state+1
+	//
+	// 	}
 
 
 
 		else{ //for first message
 			outgoingMessage = Bot.Message.text(exclaims[mathRan()])
 			    outgoingMessage.addResponseKeyboard(["Keep Going"], false, message.from)
-					// user.state = user.state+1
+					user.state = user.state+1
 					console.log(user.state, "This is the else")
 	  	}
 			///Ivar emoji test
