@@ -14,7 +14,7 @@ var request = require('request');
 request.post({
 	headers: {
 		  'Content-Type': 'application/json',
-			'Authorization': 'Basic ' + new Buffer("chat_stories:c8f28c78-26af-42de-84ea-f237b1b7e506").toString('base64')
+			'Authorization': 'Basic ' + new Buffer("chat_stories:"+config.apiKey).toString('base64')
 	 },
         url: 'https://api.kik.com/v1/code'
          }, function(error, response, body){
