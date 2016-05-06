@@ -37,9 +37,8 @@ mongoose.connect(DB_URL, function(err){
 let bot = new Bot({
     username: 'chat_stories',  //process.env.BOT_USERNAME
     apiKey: config.apiKey,
-		baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku
-
-			//baseUrl:  'http://6c9a14ef.ngrok.io '  //for localhost
+		baseUrl:  ' http://fb5787d1.ngrok.io'  //for localhost
+				//baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku
 
 
 });
@@ -53,9 +52,11 @@ bot.updateBotConfiguration();
 
 
 
-bot.onTextMessage((message, next) => {
+bot.onTextMessage((message) => {
   //Needed to create variable for the Outgoing Message
-  var outgoingMessage
+
+
+	var outgoingMessage
   var knife = false
 
 
@@ -235,9 +236,6 @@ bot.onTextMessage((message, next) => {
     user.save()//save the user
 	  bot.send(outgoingMessage, message.from)
 
-		// Allow the next handler take over
-		    next();
-
 
 	})
 
@@ -258,12 +256,14 @@ bot.onTextMessage((message, next) => {
   // } else {
   //   message.reply("Go Away. You are very boring.");
   // }
-});
+});   //end bot.onTextMessage((message) =>
 
 
 //=============================Other Message Types==============================
 bot.onPictureMessage((handler)=> {
-	console.log("hi, Mrs Doubtfire" )
+	console.log("hi, Mrs Doubtfire")
+
+
 
 });
 
