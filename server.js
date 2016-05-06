@@ -35,7 +35,7 @@ mongoose.connect(DB_URL, function(err){
 // Configure the bot API endpoint, details for your bot
 let bot = new Bot({
     username: 'chat_stories',  //process.env.BOT_USERNAME
-    apiKey: 'c8f28c78-26af-42de-84ea-f237b1b7e506',
+    apiKey: config.chatApiKey,
 		baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku
 
 			//baseUrl:  'http://6c9a14ef.ngrok.io '  //for localhost
