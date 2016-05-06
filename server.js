@@ -52,7 +52,7 @@ bot.updateBotConfiguration();
 
 //=============================Other Message Types==============================
 bot.onPictureMessage((handler)=> {
-	console.log("hi")
+	console.log("hi, Mrs Doubtfire" )
 
 });
 
