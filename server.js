@@ -5,6 +5,7 @@ let http = require('http');
 let Bot  = require('@kikinteractive/kik');   //access to Kik Library
 let mongoose = require('mongoose');
 let User = require('./models/User.js');
+let config = require('./config.js');
 // let dotenv = require('dotenv').load({silent: true});
 
 ///===========Kik Codes==============================
@@ -47,6 +48,9 @@ let bot = new Bot({
 
 
 bot.updateBotConfiguration();
+
+
+///=================for other message types////////
 
 
 
