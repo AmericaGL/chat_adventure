@@ -5,7 +5,7 @@ let http = require('http');
 let Bot  = require('@kikinteractive/kik');   //access to Kik Library
 let mongoose = require('mongoose');
 let User = require('./models/User.js');
-let config = require('./config.js');
+let config = require('./config.js'); //for keys
 
 // let dotenv = require('dotenv').load({silent: true});
 
@@ -50,6 +50,12 @@ let bot = new Bot({
 
 bot.updateBotConfiguration();
 
+//=============================Other Message Types==============================
+bot.onPictureMessage((handler)=> {
+	console.log("hi")
+
+});
+
 
 
 bot.onTextMessage((message) => {
@@ -66,7 +72,7 @@ bot.onTextMessage((message) => {
 		}
 
 
-////////////////////////////////////shuffle//////////////////////////////////////
+////////////////////////////////////shuffle/////////////////////////////////////
 
 	var exclaims = ["I don't know what to do...","How did I get into this?","I should never have come here", "Help me!!"]
   var mathRan = function (){return (Math.floor(Math.random() * (exclaims.length - 0)) + 0)}
