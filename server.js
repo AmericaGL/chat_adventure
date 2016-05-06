@@ -37,19 +37,16 @@ mongoose.connect(DB_URL, function(err){
 let bot = new Bot({
     username: 'chat_stories',  //process.env.BOT_USERNAME
     apiKey: config.apiKey,
-		baseUrl:  ' http://fb5787d1.ngrok.io'  //for localhost
-				//baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku
+		baseUrl:  'https://polar-shelf-69223.herokuapp.com/'  //for Heroku
+				//baseUrl:  ' http://fb5787d1.ngrok.io'  //for localhost
 
 
 });
 
 
-
-
-
 bot.updateBotConfiguration();
 
-//All If/Else Logic and is in this function
+//All Game Logic and is in this function=====================
 function allLogic(message){
 		var outgoingMessage
 	  var knife = false
@@ -221,21 +218,31 @@ function allLogic(message){
 		}//end allLogic
 
 
+//onMessage Types=============================================
+	bot.onTextMessage((message) => {
+	//Needed to create variable for the Outgoing Message
 
-bot.onTextMessage((message) => {
-  //Needed to create variable for the Outgoing Message
-
-  allLogic(message)
-
-
+					allLogic(message)
 	});   //end bot.onTextMessage((message) =>
 
-
-	//=============================Other Message Types==============================
 	bot.onPictureMessage((message)=> {
-		console.log("hi, Mrs Doubtfire")
-			allLogic(message)
+					allLogic(message)
+	});
 
+	bot.onVideoMessage((message)=> {
+					allLogic(message)
+	});
+
+	bot.onStickerMessage((message)=> {
+		  		allLogic(message)
+	});
+
+	bot.onScanDataMessage((message)=> {
+					allLogic(message)
+	});
+
+	bot.onLinkMessage((message)=> {
+					allLogic(message)
 	});
 
 
