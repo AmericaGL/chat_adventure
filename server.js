@@ -50,15 +50,10 @@ let bot = new Bot({
 
 bot.updateBotConfiguration();
 
-//=============================Other Message Types==============================
-bot.onPictureMessage((handler)=> {
-	console.log("hi, Mrs Doubtfire" )
-
-});
 
 
 
-bot.onTextMessage((message) => {
+bot.onTextMessage((message, next) => {
   //Needed to create variable for the Outgoing Message
   var outgoingMessage
   var knife = false
@@ -240,7 +235,8 @@ bot.onTextMessage((message) => {
     user.save()//save the user
 	  bot.send(outgoingMessage, message.from)
 
-
+		// Allow the next handler take over
+		    next();
 
 
 	})
@@ -263,6 +259,14 @@ bot.onTextMessage((message) => {
   //   message.reply("Go Away. You are very boring.");
   // }
 });
+
+
+//=============================Other Message Types==============================
+bot.onPictureMessage((handler)=> {
+	console.log("hi, Mrs Doubtfire" )
+
+});
+
 
 
 
