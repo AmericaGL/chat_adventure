@@ -5,7 +5,7 @@ let http = require('http');
 let Bot  = require('@kikinteractive/kik');   //access to Kik Library
 let mongoose = require('mongoose');
 let User = require('./models/User.js');
-let config = require('./config.js'); //for keys
+let config = require('./config1.js'); //for keys
 
 // let dotenv = require('dotenv').load({silent: true});
 
