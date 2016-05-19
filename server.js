@@ -85,7 +85,7 @@ function allLogic(message){
 
 			if(user.state === 0) { //second message
 			// if(message.body === "hey" || message.body === "What are you up to?") { //second message
-		    outgoingMessage = Bot.Message.text("Do you ever feel like you've lived life on repeat?  I need your help.")
+		    outgoingMessage = Bot.Message.text("Chat Storiers!  I'm infront of the creepy house now, but I will be going on more adventures soon.  I need your help.")
 				user.state = user.state+1
 				console.log(currentState)
 		    outgoingMessage.addResponseKeyboard(["Sure.  What's up", "Too busy.  Sorry."], false, message.from)
