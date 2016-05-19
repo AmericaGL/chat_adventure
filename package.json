@@ -4,6 +4,7 @@
   "description": "Chat Adventure Chat Bot",
   "main": "server.js",
   "dependencies": {
+     "kikinteractive/kik": "~3.8.6", 
     "dotenv": "^2.0.0",
     "mongoose": "^4.4.12",
     "request": "^2.72.0"
